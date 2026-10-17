@@ -8,6 +8,8 @@ An Arduino Uno line-following robot with PID steering and ultrasonic obstacle st
 
 ## Line follower ([`line_follower/line_follower.ino`](line_follower/line_follower.ino))
 
+**[Open the simulation in Tinkercad](https://www.tinkercad.com/things/26ty12lvCwr-line-follower-)**
+
 - **Sensing:** five IR line sensors (A1–A5). Each sensor gets its own threshold from a start-up calibration: the robot spins in place for 3 s and records the minimum and maximum reading of every sensor.
 - **Steering:** a weighted position error from the five sensors feeds a PID controller that adjusts the speed of the two wheels around a base speed.
 - **Obstacle stop:** an HC-SR04 ultrasonic sensor is pinged every 100 ms without blocking the control loop (`millis()`). The robot stops while an obstacle is closer than 100 cm.
@@ -28,13 +30,13 @@ The full write-up (design, problems met with PID tuning, calibration and timing,
 
 ## Building blocks
 
-| Sketch | What it does |
-|---|---|
-| [ultrasonic_lm35](building-blocks/ultrasonic_lm35) | Room-access check from distance + temperature; status ("Access granted", "Overheated room", "Idle") on an I²C LCD |
-| [car_collision_detection](building-blocks/car_collision_detection) | DC motor through an H-bridge, braked when an obstacle is closer than 100 cm |
-| [dc_motor_driver](building-blocks/dc_motor_driver) | Push button cycles a DC motor forward → reverse → stop; potentiometer sets the speed (PWM) |
-| [lcd](building-blocks/lcd) | Text on a 16×2 parallel LCD (`LiquidCrystal`) |
-| [servo](building-blocks/servo) | Servo sweep 0° → 180° → 0° |
+| Sketch | What it does | Tinkercad |
+|---|---|---|
+| [ultrasonic_lm35](building-blocks/ultrasonic_lm35) | Room-access check from distance + temperature; status ("Access granted", "Overheated room", "Idle") on an I²C LCD | [open](https://www.tinkercad.com/things/aAB7NVmpCC1-ultrasonic-and-lm35) |
+| [car_collision_detection](building-blocks/car_collision_detection) | DC motor through an H-bridge, braked when an obstacle is closer than 100 cm | [open](https://www.tinkercad.com/things/3tSwN8sZLkJ-car-collision-detection) |
+| [dc_motor_driver](building-blocks/dc_motor_driver) | Push button cycles a DC motor forward → reverse → stop; potentiometer sets the speed (PWM) | [open](https://www.tinkercad.com/things/7zsZJF5jQBF-dc-motor-and-driver) |
+| [lcd](building-blocks/lcd) | Text on a 16×2 parallel LCD (`LiquidCrystal`) | — |
+| [servo](building-blocks/servo) | Servo sweep 0° → 180° → 0° | [open](https://www.tinkercad.com/things/4FoMznj48wg-arduino-servo) |
 
 ### Experiments (`building-blocks/experiments/`)
 
@@ -46,9 +48,11 @@ The full write-up (design, problems met with PID tuning, calibration and timing,
 | [traffic_light](building-blocks/experiments/traffic_light) | Three-LED traffic light sequence |
 | [analog_read_serial](building-blocks/experiments/analog_read_serial) | Prints an analog input to the serial monitor once a second |
 
+The Tinkercad circuits of these experiments are in [`building-blocks/experiments/circuits/`](building-blocks/experiments/circuits).
+
 ## Run
 
-Open a sketch folder in the Arduino IDE (board: Arduino Uno) or paste the code into a Tinkercad Circuits project wired as in its `circuit.png`. The line follower and `ultrasonic_lm35` need the `LiquidCrystal_I2C` library.
+Open a sketch folder in the Arduino IDE (board: Arduino Uno) or open its Tinkercad link where one is given, or paste the code into a Tinkercad Circuits project wired as in its `circuit.png`. The line follower and `ultrasonic_lm35` need the `LiquidCrystal_I2C` library.
 
 ## License
 
